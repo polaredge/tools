@@ -8,6 +8,7 @@ TODELETE="cnuapp_int"
 echo "1. Backup DB"
 echo "2. Restore DB"
 echo "3. Delete ALL Databases"
+echo "4. List DBs"
 echo "OR enter anything else to EXIT"
 
 read action
@@ -21,8 +22,8 @@ psql -U postgres -l | grep -w $DB_FRAUD_BACKUP | awk '{ system("dropdb -U postgr
 createdb -U postgres -T $DB  $DB_BACKUP
 createdb -U postgres -T $DB_FRAUD  $DB_FRAUD_BACKUP
 
-echo "Backed UP DBs:$DB to $DB_BACKUP"
-echo "Backed UP DBs:$DB_FRAUD to $DB_FRAUD_BACKUP"
+echo "Backed UP $DB       to $DB_BACKUP"
+echo "Backed UP $DB_FRAUD to $DB_FRAUD_BACKUP"
 exit 0
 fi
 
@@ -35,8 +36,8 @@ psql -U postgres -l | grep -w $DB_FRAUD | awk '{ system("dropdb -U postgres " $1
 createdb -U postgres -T $DB_BACKUP  $DB
 createdb -U postgres -T $DB_FRAUD_BACKUP  $DB_FRAUD
 
-echo "Restored DBs:$DB  FROM $DB_BACKUP"
-echo "Restored DBs:$DB_FRAUD FROM $DB_FRAUD_BACKUP"
+echo "Restored $DB       FROM $DB_BACKUP"
+echo "Restored $DB_FRAUD FROM $DB_FRAUD_BACKUP"
 exit 0
 fi
 
@@ -47,4 +48,10 @@ psql -U postgres -l | grep  $TODELETE | awk '{ system("dropdb -U postgres " $1)}
 echo "ALL databases DELETED"
 exit 0
 fi
+
+if [ $action -eq 4]; then
+psql -U postgres -l 
+exit 0
+fi
+
 
