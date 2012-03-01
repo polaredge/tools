@@ -49,7 +49,7 @@ echo "ALL databases DELETED"
 exit 0
 fi
 
-if [ $action -eq 4]; then
+if [ $action -eq 4 ]; then
 psql -U postgres -l 
 exit 0
 fi
