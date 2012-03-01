@@ -28,7 +28,7 @@ fi
 
 if [ $action -eq 2 ]; then
 
-# Delete current DBs
+# Delete current DB
 psql -U postgres -l | grep -w $DB | awk '{ system("dropdb -U postgres " $1)}'
 psql -U postgres -l | grep -w $DB_FRAUD | awk '{ system("dropdb -U postgres " $1)}'
 
