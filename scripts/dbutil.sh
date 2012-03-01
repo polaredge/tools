@@ -38,16 +38,9 @@ fi
 
 if [ $action -eq 3]; then
 
-# Delete All DBs
-psql -U postgres -l | grep -v '^ template\|^ postgre' | awk '{ system("dropdb -U postgres " $1)}'
+psql -U postgres -l | grep  'cnuapp_int' | awk '{ system("dropdb -U postgres " $1)}'
 
 echo "ALL databases DELETED"
 exit 0
 fi
 
-
-sudo psql -U postgres -l | grep 'cnuapp_int'| awk '{ system("dropdb -U postgres " $1)}'
-dbdel=grep 'name'  /etc/cnu/cnu_env | cut -d"'" -f2 | awk '{ system("dropdb -U postgres " $1)}'
-backupdbs=grep 'name'  /etc/cnu/cnu_env | cut -d"'" -f2 | awk '{ system("createdb -U postgres -T" $1  $1"_Backup")}'
-restoredb=awk '{ system("createdb -U postgres -T" $1  $1"_Backup2")}'
-grep 'name'  /etc/cnu/cnu_env | cut -d"'" -f2
