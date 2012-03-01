@@ -1,5 +1,9 @@
 #!/bin/bash
-CURRENT_DB=$(grep 'name'  /etc/cnu/cnu_env | cut -d"'" -f2)
+DB=$(grep 'name'  /etc/cnu/cnu_env | cut -d"'" -f2)
+DB_FRAUD=$DB"_fraud"
+DB_BACKUP=$DB"_backup"
+DB_FRAUD_BACKUP=$DB_FRAUD"_backup"
+TODELETE="cnuapp_int"
 
 echo "1. Backup DB"
 echo "2. Restore DB"
@@ -8,37 +12,37 @@ echo "OR enter anything else to EXIT"
 
 read action
 
-if [ $action -eq 1]; then
+if [ $action -eq 1 ]; then
 
 # Delete OLD Back up DBs
-psql -U postgres -l | grep -w $CURRENT_DB"_backup" | awk '{ system("dropdb -U postgres " $1)}'
-psql -U postgres -l | grep -w $CURRENT_DB"_fraud_backup" | awk '{ system("dropdb -U postgres " $1)}'
+psql -U postgres -l | grep -w $DB_BACKUP | awk '{ system("dropdb -U postgres " $1)}'
+psql -U postgres -l | grep -w $DB_FRAUD_BACKUP | awk '{ system("dropdb -U postgres " $1)}'
 
-createdb -U postgres -T $CURRENT_DB  $CURRENT_DB"_backup"
-createdb -U postgres -T $CURRENT_DB"_fraud"  $CURRENT_DB"_fraud_backup"
+createdb -U postgres -T $DB  $DB_BACKUP
+createdb -U postgres -T $DB_FRAUD  $DB_FRAUD_BACKUP
 
-echo "Backed UP DBs:$CURRENT_DB_backup"
-echo "Backed UP DBs:$CURRENT_DB_fraud_backup"
+echo "Backed UP DBs:$DB to $DB_BACKUP"
+echo "Backed UP DBs:$DB_FRAUD to $DB_FRAUD_BACKUP"
 exit 0
 fi
 
-if [ $action -eq 2]; then
+if [ $action -eq 2 ]; then
 
 # Delete current DBs
-psql -U postgres -l | grep -w $CURRENT_DB | awk '{ system("dropdb -U postgres " $1)}'
-psql -U postgres -l | grep -w $CURRENT_DB"_fraud" | awk '{ system("dropdb -U postgres " $1)}'
+psql -U postgres -l | grep -w $DB | awk '{ system("dropdb -U postgres " $1)}'
+psql -U postgres -l | grep -w $DB_FRAUD | awk '{ system("dropdb -U postgres " $1)}'
 
-createdb -U postgres -T $CURRENT_DB"_backup"  $CURRENT_DB"_backup"
-createdb -U postgres -T $CURRENT_DB"_fraud_back"  $CURRENT_DB"_fraud_backup"
+createdb -U postgres -T $DB_BACKUP  $DB
+createdb -U postgres -T $DB_FRAUD_BACKUP  $DB_FRAUD
 
-echo "Restored DBs:$CURRENT_DB"
-echo "Restored DBs:$CURRENT_DB_fraud"
+echo "Restored DBs:$DB  FROM $DB_BACKUP"
+echo "Restored DBs:$DB_FRAUD FROM $DB_FRAUD_BACKUP"
 exit 0
 fi
 
-if [ $action -eq 3]; then
+if [ $action -eq 3 ]; then
 
-psql -U postgres -l | grep  'cnuapp_int' | awk '{ system("dropdb -U postgres " $1)}'
+psql -U postgres -l | grep  $TODELETE | awk '{ system("dropdb -U postgres " $1)}'
 
 echo "ALL databases DELETED"
 exit 0
