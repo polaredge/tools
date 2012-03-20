@@ -1,0 +1,92 @@
+gb:
+  - flow: [reg1 , reg2 , contract , debitcard]
+gbi:
+  - [short_form , reg1 , reg2 , contract , debitcard]
+us:
+  - [reg1 , reg2 , contract , debitcard]
+aea:
+  - [reg1 , reg2 , contract , debitcard]
+au:
+  - [reg1 , reg2 , contract , debitcard]
+ca:
+  - [reg1 , reg2 , contract , debitcard]
+
+app_flows:
+  gb:
+    base: [short_form , reg1 , reg2 , contract]
+
+Config:
+  brands:['GB','GBI','US','JV','AU','CA']
+  products:['Installment','Payday','CSO','OEC']
+  forms:['short_form','reg1','reg2','contract','contract1','contract2','contract3','debit','ddi1','ddi2','paystub_au','paystub']
+
+GB: ['reg1','reg2','contract']
+  debit: ['debit']
+  ddi: ['ddi1','ddi2']
+GBI: ['short_form','reg1','reg2','contract']
+  debit: ['debit']
+  ddi: ['ddi1','ddi2']
+
+US:['reg1','reg2','contract','','']
+AU:['short_form','','','','','']
+
+
+payday_states=AK,AL,CA,FL,HI,ID,IL,LA,ME,MI,MN,MO,MS,ND,NV,OK,OR,RI,SD,TN,WA,WY
+installment_states=NM,SC,WI
+Payday_intl=DE
+oec_states=KS,VA
+payday_and_oec_states=UT
+cso_states=OH
+cab_states=TX
+
+AL: Alabama
+AK: Alaska
+AZ: Arizona
+AR: Arkansas
+CA: California
+CO: Colorado
+CT: Connecticut
+DE: Delaware
+DC: District of Columbia
+FL: Florida
+GA: Georgia
+HI: Hawaii
+ID: Idaho
+IL: Illinois
+IN: Indiana
+IA: Iowa
+KS: Kansas
+KY: Kentucky
+LA: Louisiana
+ME: Maine
+MD: Maryland
+MA: Massachusetts
+MI: Michigan
+MN: Minnesota
+MS: Mississippi
+MO: Missouri
+MT: Montana
+NE: Nebraska
+NV: Nevada
+NH: New Hampshire
+NJ: New Jersey
+NM: New Mexico
+NY: New York
+NC: North Carolina
+ND: North Dakota
+OH: Ohio
+OK: Oklahoma
+OR: Oregon
+PA: Pennsylvania
+RI: Rhode Island
+SC: South Carolina
+SD: South Dakota
+TN: Tennessee
+TX: Texas
+UT: Utah
+VT: Vermont
+VA: Virginia
+WA: Washington
+WV: West Virginia
+WI: Wisconsin
+WY: Wyoming

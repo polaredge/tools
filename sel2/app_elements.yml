@@ -1,0 +1,172 @@
+province_selection:
+- [customer___person___address___state_cd , address_state_cd , British Columbia , select]
+
+province_disclosures:
+- [province_selection_continue_submit  , submit]
+
+short_form:
+- [short_form_first_name , fname , Test , type]
+- [short_form_last_name , lname ,  type]
+- [short_form_email , email , type]
+- [short_form_privacy_policy_flg ,  click]
+- [short_form_amount , amount , 500 , select]
+- [quick_application_apply_now_submit , submit]
+
+reg1:
+- [customer___person___title_cd ,  title , Mr. , select]
+- [customer___person___first_name , fname , Test , type] 
+- [customer___person___last_name , lname , type]
+- [customer___person___ssn , ssn , type] 
+- [customer___email , email , type] 
+- [customer___passwd , password , password , type]
+- [customer___passwd_confirmation , confirm_password , password , type]
+- [customer___person___birth_date_day , bday_date , 2 , select]
+- [customer___person___birth_date_month , bday_month , Feb , select]
+- [customer___person___birth_date_year , bday_year , 1982 , select]
+- [customer___person___address___state_cd , state_cd , type]
+- [customer___person___address___building_name , building_name ,  Barclays , type]
+- [customer___person___address___building_number , building_number , 2000 , type]
+- [customer___person___address___line1 , address_1 , 2000 Street , type]
+- [customer___person___address___city , city , type]
+- [customer___person___address___zip , zip , type]
+- [customer___person___address___rent_own_cd , rent_cd  , Own , select]
+- [customer___person___address___date_status_cd , address_date_cd , more than 2 years , select]
+- [customer___person___home_phone , home_phone , type]
+- [customer___person___mobile_phone , mobile_phone , type]
+- [customer___person___time_to_contact_cd , time_to_contact_cd , Any , select]
+- [customer___sms_preference___terms_sms_flg , sms_flag , click]
+- [customer___person___address___monthly_housing_payment , housing_payment , 10 , type]
+- [customer___person___stateid_num , stateid_num ,  type]
+- [customer___person___stateid_state_cd , stateid_cd ,  select]
+- [customer___privacy_policy_flg , click]
+- [loan___coupon_code , coupon_cd , type]
+- [continue_continue_submit , submit]
+
+reg2:
+- [loan___end_action_cd___pay_in_full , pay_in_full , click]
+- [loan___end_action_cd___partial_payment , partial_payment , click]
+- [cso___amount , amount , 300 , select]
+- [payday___amount , amount , 300 , select ]
+- [loan___amount , amount , 300 , select]
+- [customer___net_pay_per_check , net_pay , 2000 , type]
+- [customer___income_payment_cd , income_payment_cd , Direct Deposit , select]
+- [customer___customer_paydate___income_freq_type_cd , income_freq_cd , select]
+- [customer___income_type_cd , income_type_cd , Employment , select]
+- [customer___person___company___name , company_name , Apple , type]
+- [customer___customer_paydate___next_paydate_day , pday1 , select]
+- [customer___customer_paydate___next_paydate_month , pmonth1 , select]
+- [customer___customer_paydate___next_paydate_year , pyear1 , select]
+- [customer___customer_paydate___following_paydate_day , pday2 , select]
+- [customer___customer_paydate___following_paydate_month , pmonth2 , select]
+- [customer___customer_paydate___following_paydate_year , pyear2 , select]
+- [customer___person___company___position , position , QA Tech , type]
+- [customer___person___company___person_date_cd , company_person_date_cd , more than 2 years , select]
+- [customer___person___company___main_phone_num , main_phone , type]
+- [customer___person___work_phone , work_phone , type]
+- [customer___bank_account___bank_account_type, account_type_cd , Checking , select]
+- [customer___bank_account___account_number , bank_account , type]
+- [customer___bank_account___routing_number , routing_num , type]
+- [customer___person___list_management_accept_flg , click]
+- [customer___person___marital_status_cd , marital_status_cd , Single , select]
+- [customer___person___spouse___first_name , spouse_fname , My , type]
+- [customer___person___spouse___last_name , spouse_lname , Spouse , type]
+- [loanapp_step_2_submit_submit , submit]
+
+contract_au:
+- [sign_contract1_i_agree_submit , submit]
+- [sign_contract2_i_agree_submit , submit]
+contract_ca:
+- []
+
+contract_disclosure:
+- [signature_cso_discl_first_name , fname , type]
+- [signature_cso_discl_last_name , lname , type]
+- [signature_cso_discl_ssn , ssn , type]
+- [military_cso_discl_no , click]
+- [sign_contract1_i_agree_submit , click]
+
+contract_main:
+- [signature_cso_main_first_name , fname , type]
+- [signature_cso_main_last_name , lname , type]
+- [signature_cso_main_ssn , ssn ,type]
+- [signature_cso_main_ssn_last4 , ssn4 , type]
+- [sign_contract1_i_agree_submit , click]
+
+contract_pnote:
+- [military_cso_pnote_no , click]
+- [signature_cso_pnote_first_name , fname , type]
+- [signature_cso_pnote_last_name , lname , type]
+- [signature_cso_pnote_ssn , ssn , type]
+- [signature_cso_pnote_ssn_last4, ssn4 , type]
+- [sign_contract1_i_agree_submit , submit]
+
+contract_voucher:
+- [signature_cso_voucher_first_name , fname , type]
+- [signature_cso_voucher_last_name , lname , type]
+- [signature_cso_voucher_ssn , ssn , type]
+- [sign_contract1_i_agree_submit , submit]
+
+
+contract:
+- [disclosure_payday_yes , payday_disclosure , click] 
+- [signature_payday_first_name , fname , type]
+- [signature_payday_last_name , lname , type]
+- [signature_payday_ssn , ssn , type]
+- [signature_payday_ssn_last4 , ssn4 , type]
+- [signature_disclosure_first_name , fname , type]
+- [signature_disclosure_last_name , lname , type]
+- [signature_disclosure_ssn , ssn , type]
+- [signature_installment_first_name , fname , type]
+- [signature_installment_last_name , lname , type]
+- [signature_installment_day , bday_date , select]
+- [signature_installment_month , bday_month , select]
+- [signature_installment_year , bday_year , select]
+- [signature_payday_day , bday_date , select]
+- [signature_payday_month , bday_month , select]
+- [signature_payday_year , bday_year , select]
+- ['signature_payday[privacy_policy]' , provacy_flag , click]
+- ['signature_payday[precontractual_information]' , precontract_flag  , click]
+- [signature_installment_privacy_policy , provacy_flag , click]
+- [signature_installment_precontractual_information , precontract_flag  , click]
+- [signature_payment_plan_first_name , fname , type] 
+- [signature_payment_plan_last_name , lname , type] 
+- [signature_payment_plan_ssn , ssn , type]
+- [sign_contract1_i_agree_submit , submit]
+
+debitcard:
+- [debit_card___card_type_cd , card_type_cd , Visa Delta/Visa Debit , select]
+- [debit_card___secure_card_number , card_number , 4111111111111111 , type]
+- [exp_month , exp_month , '02' , select]
+- [exp_year , exp_yeae , 2014 , select]
+- [debit_card___secure_cvv_number , cvv , 202 , type]
+- [loan_application_submit_submit , submit]
+
+ddi1:
+- [Direct Debit Form , submit]
+
+ddi2:
+- [direct_debit_confirmation_confirm_submit , submit]
+
+paystub_au:
+- [pay_stub_au___gross_pay , au_gross_pay , 2000 , type]
+- [pay_stub_au___net_pay , au_net_pay , 1800 , type]
+- [submit_submit_submit , submit]
+
+paystub_us:
+- [pay_stub___check_number , check_number , type]
+- [pay_stub___check_date_month , check_month , select]
+- [pay_stub___check_date_day , check_date , select]
+- [pay_stub___check_date_year , check_year , select]
+- [pay_stub___pay_date_from_month , from_month , select]
+- [pay_stub___pay_date_from_day , from_date , select]
+- [pay_stub___pay_date_from_year , from_year , select]
+- [pay_stub___pay_date_to_month , to_month , select]
+- [pay_stub___pay_date_to_day , to_date , select]
+- [pay_stub___pay_date_to_year , to_year , select]
+- [pay_stub___total_gross_pay_amount , gross_pay , 2000 , type]
+- [pay_stub___federal_withholding_amount , federal_amount , 100 , type]
+- [pay_stub___state_withholding_amount , state_amount , 1 , type]
+- [pay_stub___social_security_amount , social_security_amount , select]
+- [pay_stub___medicare_amount , medicare_amount , 0 , type]
+- [pay_stub___all_other_amount , other_amount , 0 , type]
+- [save_save_paycheck_submit , submit]

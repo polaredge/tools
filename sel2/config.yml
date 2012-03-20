@@ -1,0 +1,83 @@
+gb:
+  default_data:
+    bday_date: '2'
+    bday_month: Feb
+    bday_year: '1982'
+    income_freq_cd : Fortnightly
+    routing_num : '010051'
+    zip : SE16 1HW
+    phone_prefix: '51232'
+    city: London
+  url_prefix: https://www-gb-
+  url_suffix: /registration-step1.html
+  flows:
+    debitcard: [reg1 , reg2 , contract , debitcard]
+    ddi: [reg1 , reg2 , contract , ddi1 , ddi2]
+gbi:
+  default_data:
+    bday_date: '2'
+    bday_month: Feb
+    bday_year: '1982'
+    income_freq_cd : Fortnightly
+    routing_num : '010051'
+    zip : SE16 1HW
+    phone_prefix: '51232'
+    city: London
+  url_prefix: https://www-gbi-
+  url_suffix: '' 
+  flows:
+    debitcard: [short_form , reg1 , reg2 , contract , debitcard]
+    ddi: [short_form , reg1 , reg2 , contract , ddi1 , ddi2]
+au:
+  default_data:
+    state_cd: TAS
+    stateid_cd : TAS
+    stateid_num : A1#{@four}
+    income_pay_freq : biweekly
+    routing_num : '012004'
+    phone_prefix: '03422'
+  url_prefix: www-au-
+  url_suffix: /registration-step1.html
+  flows:
+    debitcard: [reg1 , reg2 , contract , paystub_au]
+ca:
+  default_data:
+    state_cd: BC
+    stateid_cd : BC
+    stateid_num :
+    income_pay_freq : biweekly
+    routing_num: '0056'
+    zip: V1K1A3
+    phone_prefix: '51234'
+    city: Test
+  url_prefix: www-ca-
+  url_suffix: /registration-step1.html
+  flows:
+    debitcard: [reg1 , reg2 , contract , debitcard]
+jv:
+  default_data:
+    state_cd: ID
+    stateid_cd : ID
+    income_pay_freq : biweekly
+    routing_num : '071000013'
+    phone_prefix: '51229'
+    zip: '83702'
+    city: Boise
+  url_prefix: www-aea-
+  url_suffix: /registration-step1.html
+  flows:
+    debitcard: [reg1 , reg2 , contract]
+us:
+  default_data:
+    state_cd: ID
+    stateid_cd: ID
+    income_pay_freq: biweekly
+    routing_num: '071000013'
+    phone_prefix: '51228'
+    zip: '83702'
+    city: Boise
+  url_prefix: www-us-
+  url_suffix: /registration-step1.html
+  flows:
+    debitcard: [reg1 , reg2 , contract]
+
