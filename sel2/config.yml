@@ -26,7 +26,7 @@ gbi:
   url_prefix: https://www-gbi-
   url_suffix: '' 
   flows:
-    debitcard: [short_form , reg1 , reg2 , contract , debitcard]
+    debitcard: [short_form ,  reg1 , reg2 , contract , ddi1 , ddi2]
     ddi: [short_form , reg1 , reg2 , contract , ddi1 , ddi2]
 au:
   default_data:

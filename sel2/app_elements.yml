@@ -142,10 +142,10 @@ debitcard:
 - [loan_application_submit_submit , submit]
 
 ddi1:
-- [Direct Debit Form , submit]
+- [Direct Debit Form , click]
 
 ddi2:
-- [direct_debit_confirmation_confirm_submit , submit]
+- [direct_debit_confirmation_confirm_submit , click]
 
 paystub_au:
 - [pay_stub_au___gross_pay , au_gross_pay , 2000 , type]

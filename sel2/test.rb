@@ -4,6 +4,6 @@ require "yaml"
 require "navigation"
 require "headless"
 begin
-Navigation.new
+Navigation.new("gb")
 #puts "Hello".red
 end

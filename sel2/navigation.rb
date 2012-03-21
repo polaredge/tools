@@ -5,7 +5,7 @@ require "yaml"
 
 class Navigation
    
-def initialize()
+def initialize(brand)
    #@h=Headless.new
    #@h.start
    #Selenium::WebDriver::Firefox.path = "/usr/bin/firefox2"
@@ -13,10 +13,10 @@ def initialize()
    driver= Selenium::WebDriver.for :firefox
    self.instance_variable_set("@browser", driver)  
    self.class.send(:define_method, 'browser', proc{self.instance_variable_get("@browser")})
-
+   @VERBOSE=false
    @app_elements= YAML::load(File.open('app_elements.yml')) 
    @config=YAML::load(File.open('config.yml')) 
-   @brand=decide_brand()
+   @brand=decide_brand(brand)
    build_random_data()
 
    build_flow()
@@ -24,13 +24,12 @@ def initialize()
 end
 
 
-def decide_brand
-  "gbi"
+def decide_brand(brand)
+  @brand=brand
 end
 
 def build_url()
   @url=@config[@brand]["url_prefix"]+"manoj.qa.cashnetusa.com"+@config[@brand]["url_suffix"]
-  puts @url
 end
 
 def build_flow
@@ -39,10 +38,12 @@ def build_flow
 end
 
 def kick_off_navigation
-  flow_hash=@config["#{@brand}"]["flows"]["debitcard"]
+  flow_hash=@config["#{@brand}"]["flows"]["ddi"]
   flow_hash.each do |k|
      form=@app_elements["#{k}"]
+     t=Time.now
      fill_and_submit_form(form)
+     puts "\e[32m#{k} took #{Time.now-t} seconds\e[0m"
   end
 end
 
@@ -59,41 +60,52 @@ def get_data(element_array)
    end
 end
 
-def fill_and_submit_form(form_array)
-  element=nil
-  form_array.each do |v|
+def findElement(e)
     begin
-      element=browser.find_element(:id, v[0].to_s)
+      element=browser.find_element(:id, e)
     rescue Selenium::WebDriver::Error::NoSuchElementError
       begin
-        element22=browser.find_element(:name, v[0].to_s)
+        element=browser.find_element(:name, e)
       rescue Selenium::WebDriver::Error::NoSuchElementError 
-        element=nil
-        puts "\e[33m NOT ON PAGE: #{v[0]} \e[0m"
+        begin
+          element=browser.find_element(:link, e)
+        rescue Selenium::WebDriver::Error::NoSuchElementError 
+          element=nil
+          puts "\e[33m NOT ON PAGE: #{e} \e[0m" if @VERBOSE
+        end
       end
     end
-    
+end
+
+def fill_and_submit_form(form_array) 
+   t=Time.now if @VERBOSE
+   element=nil
+   form_array.each do |v|
+    element=findElement(v[0])
     if element
-      puts "\e[32m #{v[v.size-1]} on  #{v[0]} \e[0m"    
     case v[v.size-1] 
     when "type"
        data=get_data(v)
        element.clear
        element.send_keys(data)
+       puts "\e[32m #{v[v.size-1]}    #{data} for #{v[1]} =>#{v[0]}\e[0m" if @VERBOSE
     when "select"
       data=get_data(v)
       option = element.find_elements(:tag_name => "option").find { |o| o.text.to_s.downcase[data.downcase]==data.downcase }
       option.click
+      puts "\e[32m #{v[v.size-1]} #{data} for #{v[1]} =>#{v[0]}\e[0m" if @VERBOSE
     when "click"
-      element.click
+      element.click if !element.selected?
+      puts "\e[32m #{v[v.size-1]} on #{v[0]}\e[0m" if @VERBOSE
     when "submit"
       element.submit
+      puts "\e[32m #{v[v.size-1]} #{v[0]}\e[0m" if @VERBOSE
     else
       puts "\e[31m  Unknown action :#{v[v.size-1]} for Element:#{v[0]}  \e[0m"
     end
    end
  end
-
+  puts "\e[32m Time elapsed: #{Time.now-t} \e[0m" if @VERBOSE
 end
 
 
